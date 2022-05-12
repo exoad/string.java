@@ -17,3 +17,7 @@ public static void main(String... args) {
   char x = str.strc[0]; // h
 }
 ```
+
+## Class Extension
+It is no need for one to remove the "final" keyword from the class declaration. This is supposed to be 
+a similar class to the original String class, and shall not be extended.
