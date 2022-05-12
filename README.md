@@ -10,5 +10,6 @@ public static void main(String... args) {
   str.forEach((v) -> {
     System.out.println(v);
   });
+  char x = str.strc[0]; // h
 }
 ```
