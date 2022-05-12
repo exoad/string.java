@@ -33,14 +33,16 @@
  */
 import java.util.Arrays;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 import java.util.HashMap;
-
+import java.util.Iterator;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-public final class string {
+public final class string implements Iterable<Character> {
 
   /// STATIC CONSTANT FIELDS ///
   protected static final char[] STD_PUNCTUATION = { ',', '.', '=', '+', '-', '*', '/', '%', '^', '&', '|', '!', '~',
@@ -583,6 +585,38 @@ public final class string {
       sb.append(c);
     }
     return sb.toString();
+  }
+
+  @Override
+  public Iterator<Character> iterator() {
+    return new Iterator<>() {
+      private int index = 0;
+
+      @Override
+      public boolean hasNext() {
+        return index < strc.length;
+      }
+
+      @Override
+      public Character next() {
+        if (index > strc.length) {
+          throw new NoSuchElementException();
+        }
+        return strc[index++];
+      }
+
+      @Override
+      public void remove() {
+        // IGNORE
+      }
+    };
+  }
+
+  @Override
+  public void forEach(Consumer<? super Character> action) {
+    for (char c : strc) {
+      action.accept(c);
+    }
   }
 
   /// ONLY FOR TESTING ///
