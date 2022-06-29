@@ -41,7 +41,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-public class string implements Iterable<Character> {
+public final class string implements Iterable<Character> {
 
   /// STATIC CONSTANT FIELDS ///
   protected static final char[] STD_PUNCTUATION = { ',', '.', '=', '+', '-', '*', '/', '%', '^', '&', '|', '!', '~',
